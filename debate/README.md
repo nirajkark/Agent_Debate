@@ -1,6 +1,13 @@
-# Debate Crew
+# AI Debate Crew
 
-Welcome to the Debate Crew project, powered by [crewAI](https://crewai.com). This template is designed to help you set up a multi-agent AI system with ease, leveraging the powerful and flexible framework provided by crewAI. Our goal is to enable your agents to collaborate effectively on complex tasks, maximizing their collective intelligence and capabilities.
+Welcome to the AI Debate Crew project, powered by [crewAI](https://crewai.com). This project creates an intelligent debate system where AI agents argue for and against a given motion, with a judge determining the winner based on the strength of arguments presented.
+
+## Project Overview
+
+This multi-agent system simulates a formal debate with three key roles:
+- **Debater (Pro)**: Presents compelling arguments in favor of the motion
+- **Debater (Con)**: Presents strong counter-arguments against the motion  
+- **Judge**: Evaluates both sides and declares the winner based on argument quality
 
 ## Installation
 
@@ -14,41 +21,96 @@ pip install uv
 
 Next, navigate to your project directory and install the dependencies:
 
-(Optional) Lock the dependencies and install them by using the CLI command:
 ```bash
 crewai install
 ```
-### Customizing
 
-**Add your `OPENAI_API_KEY` into the `.env` file**
+### Configuration
 
-- Modify `src/debate/config/agents.yaml` to define your agents
-- Modify `src/debate/config/tasks.yaml` to define your tasks
-- Modify `src/debate/crew.py` to add your own logic, tools and specific args
-- Modify `src/debate/main.py` to add custom inputs for your agents and tasks
+**Add your `GEMINI_API_KEY` into the `.env` file**
+
+Create a `.env` file in the root directory:
+```bash
+GEMINI_API_KEY=your-api-key-here
+```
+
+**Customize the debate system:**
+- `src/debate/config/agents.yaml` - Defines the debater and judge agents
+- `src/debate/config/tasks.yaml` - Defines the propose, oppose, and decide tasks
+- `src/debate/crew.py` - Contains the crew logic and agent orchestration
+- `src/debate/main.py` - Entry point with motion input configuration
 
 ## Running the Project
 
-To kickstart your crew of AI agents and begin task execution, run this from the root folder of your project:
+To start the debate, run this from the root folder of your project:
 
 ```bash
-$ crewai run
+crewai run
 ```
 
-This command initializes the debate Crew, assembling the agents and assigning them tasks as defined in your configuration.
+This command initializes the Debate Crew, where:
+1. The debater agent proposes arguments in favor of the motion
+2. The debater agent presents opposing arguments against the motion
+3. The judge evaluates both sides and declares a winner
 
-This example, unmodified, will run the create a `report.md` file with the output of a research on LLMs in the root folder.
+### Output
+
+The debate results are saved as markdown files in the `output/` directory:
+- `output/propose.md` - Arguments in favor of the motion
+- `output/oppose.md` - Arguments against the motion
+- `output/decide.md` - Judge's decision and reasoning
+
+## Example Usage
+
+Modify the motion in `src/debate/main.py` to debate different topics:
+
+```python
+inputs = {
+    'motion': 'Artificial Intelligence will do more good than harm to humanity'
+}
+```
 
 ## Understanding Your Crew
 
-The debate Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
+The AI Debate Crew consists of specialized agents working in sequence:
+
+### Agents (defined in `config/agents.yaml`)
+- **Debater**: An experienced debater skilled at presenting concise, convincing arguments from any perspective
+- **Judge**: An impartial judge who evaluates arguments objectively based solely on their merit
+
+### Tasks (defined in `config/tasks.yaml`)
+1. **Propose**: Generate compelling arguments supporting the motion
+2. **Oppose**: Generate strong counter-arguments against the motion
+3. **Decide**: Evaluate both sides and determine the winner
+
+## Project Structure
+
+```
+debate/
+├── src/
+│   └── debate/
+│       ├── config/
+│       │   ├── agents.yaml    # Agent definitions
+│       │   └── tasks.yaml     # Task definitions
+│       ├── crew.py            # Crew orchestration
+│       └── main.py            # Entry point
+├── output/                    # Debate results
+├── .env                       # API keys
+└── pyproject.toml            # Project dependencies
+```
+
+## Debate Execution Flow
+
+![Debate Execution Flow](image.png)
 
 ## Support
 
-For support, questions, or feedback regarding the Debate Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
+For support, questions, or feedback regarding crewAI:
+- Visit the [crewAI documentation](https://docs.crewai.com)
+- Check out the [GitHub repository](https://github.com/joaomdmoura/crewai)
+- [Join the Discord community](https://discord.com/invite/X4JWnZnxPb)
+- [Chat with the docs](https://chatg.pt/DWjSBZn)
 
-Let's create wonders together with the power and simplicity of crewAI.
+---
+
+*Built with the power and simplicity of crewAI - enabling AI agents to collaborate and debate complex topics.*
