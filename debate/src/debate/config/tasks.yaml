@@ -1,0 +1,16 @@
+propose_motion:
+  description: >
+    Your proposing the motion for a debate in the motion :{motion}. Come up with a motion that is
+  expected_output: >
+    Your clear argument in facor of the motion, in concise manner.
+  agent: debater
+  output_file: output/propose.md
+
+reporting_task:
+  description: >
+    Review the context you got and expand each topic into a full section for a report.
+    Make sure the report is detailed and contains any and all relevant information.
+  expected_output: >
+    A fully fledged report with the main topics, each with a full section of information.
+    Formatted as markdown without '```'
+  agent: reporting_analyst
