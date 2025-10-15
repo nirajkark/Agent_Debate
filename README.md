@@ -101,7 +101,7 @@ debate/
 
 ## Debate Execution Flow
 
-![Debate Execution Flow](image.png)
+![alt text](image-1.png)
 
 ## Support
 
