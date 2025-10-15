@@ -70,34 +70,12 @@ inputs = {
 }
 ```
 
-## Understanding Your Crew
 
-The AI Debate Crew consists of specialized agents working in sequence:
 
-### Agents (defined in `config/agents.yaml`)
-- **Debater**: An experienced debater skilled at presenting concise, convincing arguments from any perspective
-- **Judge**: An impartial judge who evaluates arguments objectively based solely on their merit
 
-### Tasks (defined in `config/tasks.yaml`)
-1. **Propose**: Generate compelling arguments supporting the motion
-2. **Oppose**: Generate strong counter-arguments against the motion
-3. **Decide**: Evaluate both sides and determine the winner
 
-## Project Structure
 
-```
-debate/
-├── src/
-│   └── debate/
-│       ├── config/
-│       │   ├── agents.yaml    # Agent definitions
-│       │   └── tasks.yaml     # Task definitions
-│       ├── crew.py            # Crew orchestration
-│       └── main.py            # Entry point
-├── output/                    # Debate results
-├── .env                       # API keys
-└── pyproject.toml            # Project dependencies
-```
+
 
 ## Debate Execution Flow
 
